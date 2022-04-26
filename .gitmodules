@@ -1,0 +1,6 @@
+[submodule "UIUtils"]
+	path = UIUtils
+	url = git@github.com:OleksiiShchelkunov/UIUtils.git
+[submodule "APIUtils"]
+	path = APIUtils
+	url = git@github.com:OleksiiShchelkunov/APIUtils.git
