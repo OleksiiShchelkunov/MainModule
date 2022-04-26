@@ -1,0 +1,4 @@
+rootProject.name = 'Hometask_2'
+include 'APIUtils'
+include 'UIUtils'
+
