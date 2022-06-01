@@ -12,8 +12,8 @@ repositories {
 
 dependencies {
     implementation 'junit:junit:4.13.2'
-    implementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
-    implementation 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    implementation 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
     implementation 'org.seleniumhq.selenium:selenium-java:4.1.4'
     implementation 'com.codeborne:selenide:6.4.0'
     implementation 'org.slf4j:slf4j-api:1.7.36'
@@ -33,3 +33,11 @@ test {
 application {
     mainClass = 'Core.MainApp'
 }
+//
+//sourceSets {
+//    test {
+//        java {
+//            srcDirs = ['src/test']
+//        }
+//    }
+//}
