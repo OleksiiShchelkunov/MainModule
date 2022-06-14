@@ -1,6 +1,6 @@
 package tests.RestAssuredTests;
 
-import APItest.APIUtils;
+import com.APItest.APIUtils;
 import models.Booking;
 import models.Bookingdates;
 import org.junit.Assert;
@@ -8,34 +8,40 @@ import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+import сore.appconfig.Config;
 
+@SpringJUnitConfig(Config.class)
 public class BookingTestSuit {
 
     Logger logger = LoggerFactory.getLogger(BookingTestSuit.class);
-    APIUtils apiUtils = new APIUtils();
+
+    @Autowired
+    public APIUtils apiUtil;
 
     @Before
     public void testPreparation() {
-        APIUtils.initTest();
+        apiUtil.initTest();
     }
 
     @Test
     public void checkThatGetBookingEndpointIsWorking() {
-        apiUtils.checkEndpointStatusCode("/booking/", 200);
+        apiUtil.checkEndpointStatusCode("/booking/", 200);
         logger.info("Endpoint is online");
     }
 
     @Test
     public void checkEndpointHeaderProperties() {
-        apiUtils.checkEndpointHeaderProperty("/booking/", "content-type", "application/json; charset=utf-8");
-        apiUtils.checkEndpointHeaderProperty("/booking/", "Server", "Cowboy");
+        apiUtil.checkEndpointHeaderProperty("/booking/", "content-type", "application/json; charset=utf-8");
+        apiUtil.checkEndpointHeaderProperty("/booking/", "Server", "Cowboy");
     }
 
     @Test
     public void createBookingCheck() {
-        Integer bookingId = apiUtils.createNewBooking("Jon", "Smith", 100, true, "2018-06-01", "2018-10-01");
+        Integer bookingId = apiUtil.createNewBooking("Jon", "Smith", 100, true, "2018-06-01", "2018-10-01");
         logger.info("Booking id=" + bookingId);
-        Booking responseBooking = apiUtils.getBookingByIDtoObject(bookingId);
+        Booking responseBooking = apiUtil.getBookingByIDtoObject(bookingId);
         Bookingdates bookingDates = responseBooking.getBookingdates();
         Assert.assertTrue(responseBooking.getFirstname().equalsIgnoreCase("Jon"));
         Assert.assertTrue(responseBooking.getLastname().equalsIgnoreCase("Smith"));
