@@ -33,12 +33,6 @@ public class Config {
         return new BookingDates();
     }
 
-//    @Bean
-//    public WebDriver driver () {
-//        WebDriver driver = DriverFactory.getNewDriver("Chrome");
-//        return driver;
-//    }
-
     @Bean
     public LoginPage loginPage () {
         return new LoginPage(DriverFactory.getNewDriver("Chrome"));
