@@ -1,18 +1,25 @@
 package tests;
 
-import drivers.DriverFactory;
-import pages.LoginPage;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import pageClasses.LoginPage;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
+import сore.appconfig.Config;
 
+@SpringJUnitConfig(Config.class)
+@RunWith(SpringJUnit4ClassRunner.class)
 public class LoginTestSuit {
 
-    @Test
-    public void positiveLoginСase() {
+    @Autowired
+    public LoginPage loginPage;
 
-        WebDriver driver = DriverFactory.getNewDriver("Chrome");
-        LoginPage loginPage = new LoginPage(driver);
+    @Test
+    public void positiveLoginCase() {
+        WebDriver driver = loginPage.getDriver();
         loginPage.openLoginPage();
         loginPage.enterUsername("standard_user");
         loginPage.enterPassword("secret_sauce");
@@ -23,9 +30,7 @@ public class LoginTestSuit {
 
     @Test
     public void negativeLoginCase() {
-
-        WebDriver driver = DriverFactory.getNewDriver("Chrome");
-        LoginPage loginPage = new LoginPage(driver);
+        WebDriver driver = loginPage.getDriver();
         loginPage.openLoginPage();
         loginPage.enterUsername("incorrect");
         loginPage.enterPassword("incorrect");

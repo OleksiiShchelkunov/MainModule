@@ -17,13 +17,17 @@ dependencies {
     implementation 'org.seleniumhq.selenium:selenium-java:4.1.4'
     implementation 'com.codeborne:selenide:6.4.0'
     implementation 'org.slf4j:slf4j-api:1.7.36'
-    implementation 'org.slf4j:slf4j-simple:1.7.36'
     implementation 'io.cucumber:cucumber-java:7.3.4'
     implementation 'io.cucumber:cucumber-junit:7.3.4'
     implementation 'org.assertj:assertj-core:3.22.0'
+    implementation 'org.springframework.boot:spring-boot-starter-test:2.7.0'
+    implementation 'org.springframework:spring-core:5.3.20'
+    testImplementation 'org.springframework:spring-test:5.3.20'
+    implementation 'org.springframework:spring-context:5.3.20'
 
     implementation project ("APIUtils")
     implementation project ("UIUtils")
+    implementation 'org.jetbrains:annotations:20.1.0'
 }
 
 test {
@@ -31,13 +35,6 @@ test {
 }
 
 application {
-    mainClass = 'Core.MainApp'
+    mainClass = 'сore.MainApp'
 }
-//
-//sourceSets {
-//    test {
-//        java {
-//            srcDirs = ['src/test']
-//        }
-//    }
-//}
+
